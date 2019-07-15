@@ -1,4 +1,4 @@
-A High Order Component to give timer powers to a child component
+A High Order Component to create and clear a timer.
 
 # Table of Contents
 
@@ -8,11 +8,11 @@ A High Order Component to give timer powers to a child component
 
 # Features
 
-Add a setTimer and clearTimer functions and keeps the timer hide from the user component.
+Add a setTimer and clearTimer functions and keeps the timer hidden from the component.
 
 # Usage
-Example of a component using a timer.
 
+Example of a component using a timer.
 
 ```js
 import React from 'react';
@@ -69,6 +69,8 @@ class RandomEmoji extends React.Component {
     return emojis[names[(names.length * Math.random()) << 0]];
   };
 }
+
+export default RandomEmoji;
 
 ```
 # External links

@@ -1,7 +1,7 @@
 {
   "name": "with-timer-react-hoc",
   "version": "0.1.0",
-  "description": "A High Order Component to create and clear timers.",
+  "description": "A High Order Component to create and clear a timer.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
