@@ -1,0 +1,27 @@
+{
+  "name": "with-timer-react-hoc",
+  "version": "0.1.0",
+  "description": "A High Order Component to create and clear timers.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Muramasah/with-timer-react-hoc.git"
+  },
+  "keywords": [
+    "react",
+    "component",
+    "timer"
+  ],
+  "author": "Xavier Felipe Medina <medina.xavier.felipe@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Muramasah/with-timer-react-hoc/issues"
+  },
+  "homepage": "https://github.com/Muramasah/with-timer-react-hoc#readme",
+  "dependencies": {
+    "react": "^16.8.6"
+  }
+}
