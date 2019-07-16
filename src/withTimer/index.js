@@ -5,6 +5,7 @@ import React from 'react';
 const DEFAULT_WAIT_INTERVAL = 500;
 
 // COMPONENT DECLARATION
+
 /**
  * High order function which makes the child component able to create and destroy a timer.
  * 
@@ -39,12 +40,12 @@ const withTimer = (ChildComponent, waitInterval = DEFAULT_WAIT_INTERVAL) => {
    * 
    * @param {Object} props Component properties.
    */
-  const ComponentWithTimer = props => <ChildComponent {...props, clearTimer, setTimer} />;
+  const ComponentWithTimer = (props) => (
+    <ChildComponent clearTimer={clearTimer} setTimer={setTimer} {...props} />
+  );
 
   return ComponentWithTimer;
 };
 
-/**
- * EXPORT
- */
+// EXPORT
 export default withTimer;
