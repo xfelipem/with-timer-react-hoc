@@ -1,3 +1,5 @@
+[![Build Status](https://api.travis-ci.org/Muramasah/with-timer-react-hoc.svg?branch=master)](https://travis-ci.org/Muramasah/with-timer-react-hoc) [![Coverage Status](https://coveralls.io/repos/github/Muramasah/with-timer-react-hoc/badge.svg?branch=master)](https://coveralls.io/github/Muramasah/with-timer-react-hoc?branch=master)
+
 A High Order Component to create and clear a timer.
 
 # Table of Contents
