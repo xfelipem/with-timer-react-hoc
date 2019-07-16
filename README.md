@@ -1,4 +1,4 @@
-[![Build Status](https://api.travis-ci.org/Muramasah/with-timer-react-hoc.svg?branch=master)](https://travis-ci.org/Muramasah/with-timer-react-hoc) [![Coverage Status](https://coveralls.io/repos/github/Muramasah/with-timer-react-hoc/badge.svg?branch=master)](https://coveralls.io/github/Muramasah/with-timer-react-hoc?branch=master)
+[![Build Status](https://api.travis-ci.org/Muramasah/with-timer-react-hoc.svg?branch=master)](https://travis-ci.org/Muramasah/with-timer-react-hoc) [![Coverage Status](https://coveralls.io/repos/github/Muramasah/with-timer-react-hoc/badge.svg?branch=master)](https://coveralls.io/github/Muramasah/with-timer-react-hoc?branch=master) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/Muramasah/with-timer-react-hoc/blob/master/LICENSE)
 
 A High Order Component to create and clear a timer.
 
@@ -6,7 +6,8 @@ A High Order Component to create and clear a timer.
 
 1. [Features](#features) 
 2. [Usage](#usage)
-3. [External links](#external-links)
+3. [Install](#install)
+4. [External links](#external-links)
 
 # Features
 
@@ -73,6 +74,18 @@ class RandomEmoji extends React.Component {
 export default RandomEmoji;
 
 ```
+# Install
+
+NPM
+```
+npm i with-timer-react-hoc
+
+```
+Yarn
+```
+yarn add with-timer-react-hoc
+```
+
 # External links
 
 1. [Oficial  React HOCs documentation](https://reactjs.org/docs/higher-order-components.html)
