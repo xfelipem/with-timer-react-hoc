@@ -18,8 +18,6 @@ Example of a component using a timer.
 import React from 'react';
 import withTimer from 'with-timer-react-hoc';
 
-import React from "react";
-import ReactDOM from "react-dom";
 /**
  * Original code from Pedro Duarte
  * @see https://codesandbox.io/s/84ryn6kv7l
