@@ -1,3 +1,3 @@
-import withTimer from './src'
+import withTimer from './src/withTimer'
 
 export default withTimer;
