@@ -1,64 +1,75 @@
 // THIRD PARTY DEPENDENCIES
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 // INTERNAL DEPENDENCIES
 import withTimer from '../withTimer';
 
-// CONSTANTS DECLARATION
+// CONSTANTS
 const API_URL = 'https://api.github.com/emojis';
+const DEFAULT_INTERVAL = 1000;
+const STYLES = {
+  CONTAINER: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '100vh'
+  },
+  EMOJI: {
+    width: '64px'
+  }
+};
 
-// PRIVATE METHOD DECLARATION
+// SELECTORS
 const selectRandomEmoji = (emojis) => {
   const names = Object.keys(emojis);
 
   return emojis[names[(names.length * Math.random()) << 0]];
 };
 
-// COMPONENT DECLARATION
+// COMPONENT
+const RandomEmoji = (props) => {
+  // PROPERTIES
+  const { clearTimer, setTimer } = props;
 
-/**
- * Original code from Pedro Duarte
- * @see https://codesandbox.io/s/84ryn6kv7l
- * @see https://84ryn6kv7l.codesandbox.io/
- * @see https://twitter.com/peduarte/status/1089930801536532480?s=20
-*/
-class RandomEmoji extends React.Component {
-  state = { emojis: {}, emoji: '' };
+  // STATE
+  const [emojis, setEmojis] = useState({});
+  const [emoji, setEmoji] = useState('');
 
-  componentDidMount() {
+  // PRIVATE METHODS
+  const mutateEmoji = () => setEmoji(selectRandomEmoji(emojis));
+  const mutateEmojis = serverEmojis => {
+    setEmojis(serverEmojis);
+    mutateEmoji();
+  };
+
+  // LIFE CYCLE
+  const fetchEmojisEffectHandler = () => {
+    // EFFECT
     axios.get(API_URL)
       .then(response => response.json())
-      .then(emojis => this.setState({ emojis, emoji: selectRandomEmoji(emojis) }));
+      .then(mutateEmojis);
+
+    // EFFECTS CLEANER
+    /** We do not needmutateEmojismutateEmojis this to return any effect cleaner */
+  }
+  const setTimerEffectHandler = () => {
+    // EFFECT
+    setTimer(mutateEmoji, DEFAULT_INTERVAL); /** Here we set the timer */
+
+    // EFFECTS CLEANER
+    return clearTimer /** Here we return the cleaner function. */
   }
 
-  componentDidUpdate() {
-    // Here we set the timer
-    this.props.setTimer(
-      () => this.setState({ emoji: selectRandomEmoji(this.state.emojis) }),
-      1000
-    );
-  }
+  useEffect(fetchEmojisEffectHandler);
+  useEffect(setTimerEffectHandler);
 
-  componentWillUnmount() {
-    // Here we clear the timer, this code can be used in a "stop" button implementation.
-    this.props.clearTimer();
-  }
-
-  render() {
-    return (
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          height: "100vh"
-        }}
-      >
-        <img src={this.state.emoji} width="64px" />
-      </div>
-    );
-  }
+  // VISUAL NODES
+  return (
+    <div style={STYLES.CONTAINER}>
+      <img src={emoji} style={STYLES.EMOJI} />
+    </div>
+  );
 };
 
 const RandomEmojiWithTimer = withTimer(RandomEmoji);
