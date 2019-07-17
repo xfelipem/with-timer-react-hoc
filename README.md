@@ -8,6 +8,7 @@ A High Order Component to create and clear a timer.
 2. [Usage](#usage)
 3. [Install](#install)
 4. [External links](#external-links)
+5. [What does this repo have][What-does-this-repo-have]
 
 # Features
 
@@ -15,7 +16,7 @@ Add a setTimer and clearTimer functions and keeps the timer hidden from the comp
 
 # Usage
 
-Example of a component using a timer.
+Example of a class component implementing the HOC. If you prefere an example using hooks take a look [here](https://github.com/Muramasah/with-timer-react-hoc/blob/master/example/RandomEmoji/index.js)
 
 ```js
 import React from 'react';
@@ -89,3 +90,13 @@ yarn add with-timer-react-hoc
 # External links
 
 1. [Oficial  React HOCs documentation](https://reactjs.org/docs/higher-order-components.html)
+
+# What does this repo have
+
+1. Continous integration with [Travis](https://travis-ci.org) and [Coveralls](https://coveralls.io/).
+2. Webpack and babel setup to share isolated components.
+3. Jest configuration with code coverage.
+4. An example of a High Order Function.
+5. An example of a functional component using useState and useEffect hooks.
+6. Asynchronous code using hooks, two cases API call and timer execution.
+7. Descriptions of each part of the written code.
