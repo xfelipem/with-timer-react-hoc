@@ -5,13 +5,15 @@ module.exports = {
   entry: './src/withTimer/index.js',
   output: {
     path: path.resolve(__dirname),
-    filename: 'index.js'
+    filename: 'index.js',
+    libraryTarget: 'commonjs2'
   },
   module: {
     rules: [
       {
         test: /\.js?$/,
-        exclude: /(node_modules)/,
+        include: path.resolve(__dirname, 'src'),
+        exclude: /(node_modules|bower_components|build)/,
         use: 'babel-loader'
       }
     ]
