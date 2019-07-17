@@ -8,17 +8,9 @@ import withTimer from '../../src/withTimer';
 // CONSTANTS
 const API_URL = 'https://api.github.com/emojis';
 const DEFAULT_INTERVAL = 1000;
-const STYLES = {
-  CONTAINER: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: '100vh'
-  },
-  EMOJI: {
-    width: '64px'
-  }
-};
+
+// HELPERS
+const isEmpty = object => Object.entries(object).length === 0;
 
 // SELECTORS
 const selectRandomEmoji = (emojis) => {
@@ -43,10 +35,19 @@ const RandomEmoji = (props) => {
   // LIFE CYCLE
   const fetchEmojisEffectHandler = () => {
     // EFFECT
-    axios.get(API_URL)
-      .then(response => response.json())
-      .then(mutateEmojis);
+    if (isEmpty(emojis)) {
+      axios.get(API_URL)
+        .then(({ data }) => {
+          if (!data) {
+            throw new Error();
+          }
 
+          mutateEmojis(data);
+        })
+        .catch(() => mutateEmojis({
+          argentina: 'https://github.githubassets.com/images/icons/emoji/unicode/1f1e6-1f1f7.png?v8'
+        }));
+    }
     // EFFECTS CLEANER
     /** We do not need to return any effect cleaner */
   }
@@ -55,17 +56,19 @@ const RandomEmoji = (props) => {
     setTimer(mutateEmoji, DEFAULT_INTERVAL); /** Here we set the timer */
 
     // EFFECTS CLEANER
-    //return clearTimer /** Here we return the cleaner function. */
+    return clearTimer /** Here we return the cleaner function. */
   }
 
   useEffect(fetchEmojisEffectHandler);
   useEffect(setTimerEffectHandler);
 
+  if (emoji === '') {
+    return null;
+  }
+
   // VISUAL NODES
   return (
-    <div style={STYLES.CONTAINER}>
-      <img src={emoji} style={STYLES.EMOJI} />
-    </div>
+    <img alt='emoji' src={emoji} />
   );
 };
 
