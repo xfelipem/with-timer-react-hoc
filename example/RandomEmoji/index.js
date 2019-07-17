@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 // INTERNAL DEPENDENCIES
-import withTimer from '../withTimer';
+import withTimer from '../../src/withTimer';
 
 // CONSTANTS
 const API_URL = 'https://api.github.com/emojis';
@@ -38,10 +38,7 @@ const RandomEmoji = (props) => {
 
   // PRIVATE METHODS
   const mutateEmoji = () => setEmoji(selectRandomEmoji(emojis));
-  const mutateEmojis = serverEmojis => {
-    setEmojis(serverEmojis);
-    mutateEmoji();
-  };
+  const mutateEmojis = serverEmojis => setEmojis(serverEmojis);
 
   // LIFE CYCLE
   const fetchEmojisEffectHandler = () => {
@@ -51,14 +48,14 @@ const RandomEmoji = (props) => {
       .then(mutateEmojis);
 
     // EFFECTS CLEANER
-    /** We do not needmutateEmojismutateEmojis this to return any effect cleaner */
+    /** We do not need to return any effect cleaner */
   }
   const setTimerEffectHandler = () => {
     // EFFECT
     setTimer(mutateEmoji, DEFAULT_INTERVAL); /** Here we set the timer */
 
     // EFFECTS CLEANER
-    return clearTimer /** Here we return the cleaner function. */
+    //return clearTimer /** Here we return the cleaner function. */
   }
 
   useEffect(fetchEmojisEffectHandler);
