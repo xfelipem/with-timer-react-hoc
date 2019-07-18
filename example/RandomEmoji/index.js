@@ -8,6 +8,7 @@ import withTimer from '../../src/withTimer';
 // CONSTANTS
 const API_URL = 'https://api.github.com/emojis';
 const DEFAULT_INTERVAL = 1000;
+const EMPTY_STRING = '';
 
 // HELPERS
 
@@ -24,8 +25,11 @@ const isObjectEmpty = object => Object.entries(object).length === 0;
  * @param {Object} emojis map of emojis links sorted by name.
  */
 const selectRandomEmoji = (emojis) => {
-  if(emojis.length)
   const names = Object.keys(emojis);
+
+  if (names.length < 1) {
+    return EMPTY_STRING;
+  }
 
   return emojis[names[(names.length * Math.random()) << 0]];
 };
@@ -37,7 +41,7 @@ const RandomEmoji = (props) => {
 
   // STATE
   const [emojis, setEmojis] = useState({});
-  const [emoji, setEmoji] = useState('');
+  const [emoji, setEmoji] = useState(EMPTY_STRING);
 
   // PRIVATE METHODS
   const mutateEmoji = () => setEmoji(selectRandomEmoji(emojis));
@@ -73,7 +77,7 @@ const RandomEmoji = (props) => {
   useEffect(fetchEmojisEffectHandler);
   useEffect(setTimerEffectHandler);
 
-  if (emoji === '') {
+  if (emoji === EMPTY_STRING) {
     return null;
   }
 
