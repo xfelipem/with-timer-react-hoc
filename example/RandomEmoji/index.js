@@ -10,10 +10,21 @@ const API_URL = 'https://api.github.com/emojis';
 const DEFAULT_INTERVAL = 1000;
 
 // HELPERS
-const isEmpty = object => Object.entries(object).length === 0;
 
-// SELECTORS
+/**
+ * Validator, checks if the object is empty
+ * 
+ * @param {Object}
+ * @returns {bool}
+ */
+const isObjectEmpty = object => Object.entries(object).length === 0;
+/**
+ * Selector, picks a random emoji from a map of emojis.
+ * 
+ * @param {Object} emojis map of emojis links sorted by name.
+ */
 const selectRandomEmoji = (emojis) => {
+  if(emojis.length)
   const names = Object.keys(emojis);
 
   return emojis[names[(names.length * Math.random()) << 0]];
@@ -35,7 +46,7 @@ const RandomEmoji = (props) => {
   // LIFE CYCLE
   const fetchEmojisEffectHandler = () => {
     // EFFECT
-    if (isEmpty(emojis)) {
+    if (isObjectEmpty(emojis)) {
       axios.get(API_URL)
         .then(({ data }) => {
           if (!data) {
@@ -48,14 +59,14 @@ const RandomEmoji = (props) => {
           argentina: 'https://github.githubassets.com/images/icons/emoji/unicode/1f1e6-1f1f7.png?v8'
         }));
     }
-    // EFFECTS CLEANER
+    // EFFECT CLEANER
     /** We do not need to return any effect cleaner */
   }
   const setTimerEffectHandler = () => {
     // EFFECT
     setTimer(mutateEmoji, DEFAULT_INTERVAL); /** Here we set the timer */
 
-    // EFFECTS CLEANER
+    // EFFECT CLEANER
     return clearTimer /** Here we return the cleaner function. */
   }
 
@@ -72,6 +83,7 @@ const RandomEmoji = (props) => {
   );
 };
 
+// HOC Wrapping
 const RandomEmojiWithTimer = withTimer(RandomEmoji);
 
 // EXPORT
