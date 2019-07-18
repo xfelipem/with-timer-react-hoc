@@ -1,6 +1,6 @@
 {
   "name": "with-timer-react-hoc",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "A High Order Component to create and clear a timer.",
   "main": "index.js",
   "scripts": {
