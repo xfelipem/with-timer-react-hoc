@@ -7,12 +7,12 @@ A High Order Component to create and clear a timer.
 1. [Features](#features) 
 2. [Usage](#usage)
 3. [Install](#install)
-4. [External links](#external-links)
-5. [What does this repo have][What-does-this-repo-have]
+4. [What does this repo have](#what-does-this-repo-have)
+5. [But why](#but-why)
 
 # Features
 
-Add a setTimer and clearTimer functions and keeps the timer hidden from the component.
+Add a [setTimer](https://github.com/Muramasah/with-timer-react-hoc/blob/55f2923778187856dce05efdb4f24b99bac31026/src/withTimer/index.js#L34) and [clearTimer](https://github.com/Muramasah/with-timer-react-hoc/blob/55f2923778187856dce05efdb4f24b99bac31026/src/withTimer/index.js#L26) functions and keeps the [timer](https://github.com/Muramasah/with-timer-react-hoc/blob/55f2923778187856dce05efdb4f24b99bac31026/src/withTimer/index.js#L17) hidden from the component.
 
 # Usage
 
@@ -72,7 +72,8 @@ class RandomEmoji extends React.Component {
   };
 }
 
-export default RandomEmoji;
+// Wrapping the component with the HOC
+export default withTimer(RandomEmoji);
 
 ```
 # Install
@@ -87,16 +88,22 @@ Yarn
 yarn add with-timer-react-hoc
 ```
 
-# External links
-
-1. [Oficial  React HOCs documentation](https://reactjs.org/docs/higher-order-components.html)
-
 # What does this repo have
 
 1. Continous integration with [Travis](https://travis-ci.org) and [Coveralls](https://coveralls.io/).
-2. Webpack and babel setup to share isolated components.
-3. Jest configuration with code coverage.
-4. An example of a High Order Function.
-5. An example of a functional component using useState and useEffect hooks.
-6. Asynchronous code using hooks, two cases API call and timer execution.
+2. [Webpack](https://webpack.js.org) and [babel](https://babeljs.io/) setup to share isolated components.
+3. [Jest](https://jestjs.io/) configuration with code coverage.
+4. An example of a [High Order Component](https://reactjs.org/docs/higher-order-components.html) in React.
+5. Asynchronous code using [hooks](https://reactjs.org/docs/hooks-intro.html), two cases API call and timer execution.
+6. An example of a [functional component](https://reactjs.org/docs/components-and-props.html#function-and-class-components) using [useState](https://reactjs.org/docs/hooks-state.html) and [useEffect](https://reactjs.org/docs/hooks-effect.html) hooks.
 7. Descriptions of each part of the written code.
+
+# But why
+
+## A timer in a HOC
+
+The HOCs are recommended by the react team to be used in the implementation of [Cross-Cutting Concerns](https://reactjs.org/docs/higher-order-components.html#use-hocs-for-cross-cutting-concerns). The timer is not part of a visualization logic. This kind of logic always answer to "what needs to be to displayed?", but the timer answer to "when do display it?" like an user action.
+
+## The proyect setup
+
+The setup and configuration will be the base for a template to create isolated components and small React apps with TDD and CI.
