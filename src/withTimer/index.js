@@ -1,22 +1,22 @@
 // THIRD PARTY DEPENDENCIES
 import React from 'react';
 
-// CONSTANTS DECLARATION
+// CONSTANTS
 const DEFAULT_WAIT_INTERVAL = 500;
 
-// COMPONENT DECLARATION
+// COMPONENT
 
 /**
- * High order function which makes the child component able to create and destroy a timer.
+ * High order component which makes the child component able to create and destroy a timer.
  * 
  * @param {Component} ChildComponent component to be wrapped.
  * @param {Number} waitInterval timer interval in miliseconds.
  */
 const withTimer = (ChildComponent, waitInterval = DEFAULT_WAIT_INTERVAL) => {
-  // PRIVATE PROPERTIES DECLARATION
+  // PRIVATE PROPERTIES
   let timer = null;
 
-  // PRIVATE METHODS DECLARATION
+  // PRIVATE METHODS
 
   /**
    * Clears a timer.
