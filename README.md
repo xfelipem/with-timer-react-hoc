@@ -175,7 +175,7 @@ The return statement from a functional component or the render method from a cla
 
 ## High Order Component wrapping
 
-When we work with component testing we need to be able to export different instances of it, basically to avoid testing not render related process like api connections, or even this **withTimer** HOC. These process should be tested but not from a component test.
+When we work with component testing we need to be able to export different instances of it, basically to avoid testing render related process like api connections, or even this **withTimer** HOC. These process should be tested but not from a component test.
 
 ## Export
 
